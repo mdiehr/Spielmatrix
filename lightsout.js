@@ -1,47 +1,38 @@
 
-var sm = new Spielmatrix();
+var sm = new Spielmatrix({width:20, height:10, defaultColor: 0x007700});
 
 (function lightsOut (sm) {
-    var stage = sm.state.stage;
-
-    var graphics = new PIXI.Graphics().beginFill(0xFF0000);
-    var liveGraphics = new PIXI.Graphics().beginFill(0xFF0000);
-    stage.addChild(graphics);
-    stage.addChild(liveGraphics);
-
-    var path = [];
-
+    // Initialization
     var isDown = false;
-    var color = 0;
-
     var colors = [0x5D0776, 0xEC8A49, 0xAF3666, 0xF6C84C, 0x4C779A];
     var colorCount = 0;
+    var color = 0;
 
-    stage.mousedown = function(data) {
+    // Fill grid
+    for (var y = 0; y < 10; ++y) {
+        for (var x = 0; x < 20; ++x) {
+            // sm.draw(x, y, 0xAAAAAA);
+        }
+    }
+
+    sm.mousedown = function(x, y) {
+        color = colors[++colorCount%colors.length];
         isDown = true;
-        path = [];
-        color = colors[colorCount++ % colors.length];
-    }
+        sm.draw(x, y, color);
+    };
 
-    stage.mousemove = function(data) {
-        if(!isDown) return;
-
-        path.push(data.global.x);
-        path.push(data.global.y);
-    }
-
-    stage.mouseup = function() {
+    sm.mouseup = function(x, y) {
         isDown = false;
-        graphics.beginFill(color);
-        graphics.drawPolygon(path)
-        graphics.endFill();
-        path = [];
-    }
+        sm.draw(x, y, color);
+    };
 
-    sm.onUpdate(function(){
-        liveGraphics.clear();
-        liveGraphics.beginFill(color);
-        liveGraphics.drawPolygon(path);
-    });
+    sm.mousemove = function(x, y) {
+        if(!isDown) return;
+        sm.draw(x, y, color);
+    };
+
+    sm.update = function(data) {
+        console.log("Test");
+    }
 
 })(sm);
