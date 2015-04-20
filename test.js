@@ -23,6 +23,14 @@
     };
 
     sm.update = function(data) {
-        console.log("Test");
+        drawAll(colors[++colorCount%colors.length]);
+    }
+
+    function drawAll(color) {
+        for (var y = 0; y < sm.options.height; ++y) {
+            for (var x = 0; x < sm.options.width; ++x) {
+                sm.draw(x, y, color);
+            }
+        }
     }
 })();
