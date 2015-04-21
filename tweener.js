@@ -25,7 +25,7 @@
     function colorAll(t) {
         for (var y = 0; y < sm.options.height; ++y) {
             for (var x = 0; x < sm.options.width; ++x) {
-                tileTime = t + (x + y) * 0.07;
+                tileTime = t + (x + y + 6*Math.sin(y/6)) * 0.07;
                 sm.draw(x, y, sineColor(tileTime));
             }
         }
