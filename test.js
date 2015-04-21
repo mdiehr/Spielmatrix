@@ -7,9 +7,11 @@
     var color = 0;
 
     sm.mousedown = function(x, y) {
+        drawAll(colors[++colorCount%colors.length]);
         color = colors[++colorCount%colors.length];
         isDown = true;
         sm.draw(x, y, color);
+
     };
 
     sm.mouseup = function(x, y) {
@@ -23,7 +25,7 @@
     };
 
     sm.update = function(data) {
-        drawAll(colors[++colorCount%colors.length]);
+        // drawAll(colors[++colorCount%colors.length]);
     }
 
     function drawAll(color) {
