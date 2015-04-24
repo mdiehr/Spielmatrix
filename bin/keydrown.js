@@ -137,7 +137,7 @@ var util = (function () {
  * @type {Object.<number>}
  */
 var KEY_MAP = {
-  'A': 65
+   'A': 65
   ,'B': 66
   ,'C': 67
   ,'D': 68
@@ -163,14 +163,57 @@ var KEY_MAP = {
   ,'X': 88
   ,'Y': 89
   ,'Z': 90
+  ,',': 188
+  ,'.': 190
+  ,'/': 191
+  ,';': 186
+  ,'\'': 222
+  ,'[': 219
+  ,']': 221
+  ,'0': 48
+  ,'1': 49
+  ,'2': 50
+  ,'3': 51
+  ,'4': 52
+  ,'5': 53
+  ,'6': 54
+  ,'7': 55
+  ,'8': 56
+  ,'9': 57
+  ,'-': 189
+  ,'=': 187
+  ,'BACKSPACE': 8
+  ,'TAB': 9
+  ,'DEL': 46
+  ,'NUMPAD_0': 96
+  ,'NUMPAD_1': 97
+  ,'NUMPAD_2': 98
+  ,'NUMPAD_3': 99
+  ,'NUMPAD_4': 100
+  ,'NUMPAD_5': 101
+  ,'NUMPAD_6': 102
+  ,'NUMPAD_7': 103
+  ,'NUMPAD_8': 104
+  ,'NUMPAD_9': 105
+  ,'NUMPAD_/': 111
+  ,'NUMPAD_.': 110
+  ,'NUMPAD_*': 106
+  ,'NUMPAD_-': 109
+  ,'NUMPAD_+': 107
   ,'ENTER': 13
   ,'SHIFT': 16
+  ,'CTRL': 17
   ,'ESC': 27
   ,'SPACE': 32
   ,'LEFT': 37
   ,'UP': 38
   ,'RIGHT': 39
   ,'DOWN': 40
+  ,'GRAVE': 192
+  ,'PAGEUP': 33
+  ,'PAGEDOWN': 34
+  ,'END': 35
+  ,'HOME': 36
 };
 
 
@@ -377,6 +420,8 @@ var kd = (function (keysDown) {
 
     if (isNew && kd[keyName]) {
       kd[keyName].press();
+    } else if (!kd[keyName]) {
+      console.warn("Unhandled key: " + keyCode)
     }
   });
 
