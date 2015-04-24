@@ -1,4 +1,5 @@
-(function TestGame () {
+// Test js file for Spielmatrix
+(function(){
     var sm = new Spielmatrix({width:10, height:10, defaultColor: 0x007700});
     // Initialization
     var isDown = false;
@@ -15,13 +16,25 @@
     };
 
     sm.mouseup = function(x, y) {
-        isDown = false;
-        sm.draw(x, y, color);
+        if (isDown) {
+            isDown = false;
+            sm.draw(x, y, color);
+        }
     };
 
-    sm.mousemove = function(x, y) {
-        if(!isDown) return;
-        sm.draw(x, y, color);
+    sm.mousemove = function(oldX, oldY, x, y) {
+        sm.log([oldX, oldY, x, y].join(", "));
+        if(isDown) {
+            sm.draw(x, y, color);
+        }
+    };
+
+    sm.mouseenter = function(x, y) {
+        sm.log(["enter", x, y].join(", "));
+    };
+
+    sm.mouseleave = function(x, y) {
+        sm.log(["leave", x, y].join(", "));
     };
 
     sm.update = function(data) {

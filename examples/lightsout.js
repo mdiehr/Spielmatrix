@@ -1,6 +1,6 @@
 // LightsOut example for the Spielmatrix game engine
 
-(function LightsOut () {
+(function(){
     // Game variables
     var w = h = 5;
     var colors = [0x000000, 0xFFFF00];
