@@ -1,4 +1,4 @@
-// LightsOut example for the Spielmatrix game engine
+// Key event example for the Spielmatrix game engine
 
 (function(){
     // Game variables
