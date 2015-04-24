@@ -23,23 +23,31 @@
     };
 
     sm.mousemove = function(oldX, oldY, x, y) {
-        sm.log([oldX, oldY, x, y].join(", "));
+        // sm.log(["mousemove", oldX, oldY, x, y].join(", "));
         if(isDown) {
             sm.draw(x, y, color);
         }
     };
 
     sm.mouseenter = function(x, y) {
-        sm.log(["enter", x, y].join(", "));
+        // sm.log(["mouseenter", x, y].join(", "));
     };
 
     sm.mouseleave = function(x, y) {
-        sm.log(["leave", x, y].join(", "));
+        // sm.log(["mouseleave", x, y].join(", "));
     };
 
     sm.update = function(data) {
         // drawAll(colors[++colorCount%colors.length]);
-    }
+    };
+
+    sm.keydown = function(key) {
+        sm.log(["keydown", key].join(", "));
+    };
+
+    sm.keyup = function(key) {
+        sm.log(["keyup", key].join(", "));
+    };
 
     function drawAll(color) {
         for (var y = 0; y < sm.options.height; ++y) {
