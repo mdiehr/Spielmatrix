@@ -7,7 +7,13 @@
     var player = {x:1, y:1, color:0x22AA22};
 
     // Initialize engine
-    var sm = new Spielmatrix({width:w, height:h, defaultColor: colors[0], tileSize:50});
+    var sm = new Spielmatrix({
+        width:w,
+        height:h,
+        defaultColor: colors[0],
+        tileSize:50,
+        keydown:keydown
+    });
 
     drawPlayer();
 
@@ -19,7 +25,7 @@
         sm.draw(player.x, player.y, colors[2]);
     }
 
-    sm.keydown = function(key) {
+    function keydown(key) {
         erasePlayer();
 
         if (key === 'UP' && player.y > 0) {
@@ -33,6 +39,6 @@
         }
 
         drawPlayer();
-    };
+    }
 
 })();
