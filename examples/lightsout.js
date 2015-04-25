@@ -46,11 +46,7 @@
     function toggle(x, y) {
         if (x >= 0 && x < w && y >= 0 && y < h) {
             var tile = sm.tile(x, y);
-            if (tile.color == colors[0]) {
-                tile.setColor(colors[1]);
-            } else {
-                tile.setColor(colors[0]);
-            }
+            tile.setColor(tile.color == colors[0] ? colors[1] : colors[0]);
         }
     }
 
