@@ -29,10 +29,28 @@
             }
         },
         mouseenter : function(x, y) {
-            // sm.log(["mouseenter", x, y].join(", "));
+            if(!isDown) {
+                sm.draw(x, y, 0xFFFFFF);
+            }
+            sm.log(["mouseenter", x, y].join(", "));
         },
         mouseleave : function(x, y) {
-            // sm.log(["mouseleave", x, y].join(", "));
+            if(!isDown) {
+                sm.draw(x, y, 0x444444);
+            }
+            sm.log(["mouseleave", x, y].join(", "));
+        },
+        mouseout : function(x, y) {
+            if (isDown) {
+                isDown = false;
+                sm.draw(x, y, color);
+            } else {
+                sm.draw(x, y, 0x000000);
+            }
+            sm.log(["mouseout", x, y].join(", "));
+        },
+        mouseover : function(x, y) {
+            sm.log(["mouseover", x, y].join(", "));
         },
         update : function(data) {
             // drawAll(colors[++colorCount%colors.length]);
