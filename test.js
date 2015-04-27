@@ -9,12 +9,12 @@
         width:10,
         height:10,
         defaultColor: 0x007700,
+        tileSize: 64,
         mousedown : function(x, y) {
             drawAll(colors[++colorCount%colors.length]);
             color = colors[++colorCount%colors.length];
             isDown = true;
             sm.draw(x, y, color);
-
         },
         mouseup : function(x, y) {
             if (isDown) {
@@ -23,34 +23,34 @@
             }
         },
         mousemove : function(oldX, oldY, x, y) {
-            sm.log(["mousemove", oldX, oldY, x, y].join(", "));
+            // sm.log(["mousemove", oldX, oldY, x, y].join(", "));
             if(isDown) {
                 sm.draw(x, y, color);
             }
         },
         mouseenter : function(x, y) {
+            // sm.log(["mouseenter", x, y].join(", "));
             if(!isDown) {
                 sm.draw(x, y, 0xFFFFFF);
             }
-            sm.log(["mouseenter", x, y].join(", "));
         },
         mouseleave : function(x, y) {
+            // sm.log(["mouseleave", x, y].join(", "));
             if(!isDown) {
                 sm.draw(x, y, 0x444444);
             }
-            sm.log(["mouseleave", x, y].join(", "));
         },
         mouseout : function(x, y) {
+            // sm.log(["mouseout", x, y].join(", "));
             if (isDown) {
                 isDown = false;
                 sm.draw(x, y, color);
             } else {
                 sm.draw(x, y, 0x000000);
             }
-            sm.log(["mouseout", x, y].join(", "));
         },
         mouseover : function(x, y) {
-            sm.log(["mouseover", x, y].join(", "));
+            // sm.log(["mouseover", x, y].join(", "));
         },
         update : function(data) {
             // drawAll(colors[++colorCount%colors.length]);
