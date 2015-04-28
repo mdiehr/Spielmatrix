@@ -1,7 +1,7 @@
 // tweener example
 (function(){
     var screenSize = Math.min(window.innerWidth, window.innerHeight) - 20;
-    var numTiles = 64;
+    var numTiles = 32;
     var tileSize = Math.floor(screenSize / numTiles);
     var sm = new Spielmatrix({
         width:numTiles,
@@ -26,11 +26,18 @@
         return r << 16 | g << 8 | b;
     }
 
+    function getGlyph(time) {
+        return Math.floor(time) % 256;
+
+    }
+
     function colorAll(t) {
         for (var y = 0; y < sm.options.height; ++y) {
             for (var x = 0; x < sm.options.width; ++x) {
                 tileTime = t + (x + y + 6*Math.sin(y/6)) * 0.07;
                 sm.draw(x, y, sineColor(tileTime));
+                sm.glyph(x, y, getGlyph(tileTime));
+                sm.glyphColor(x, y, sineColor(-tileTime));
             }
         }
     }
