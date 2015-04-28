@@ -48,14 +48,7 @@
 
     // Really rough mapping of characters from Unicode to PETSCII
     function getGlyph(character) {
-        var charCode = character.charCodeAt(0);
-        if (charCode >= 97) {
-            return charCode - (97 - 33);
-        } else if (charCode >= 65) {
-            return charCode;
-        } else if (charCode >= 48) {
-            return charCode - 32;
-        }
+        return character.charCodeAt(0);
     }
 
 
