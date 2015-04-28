@@ -56,7 +56,7 @@
         }
     });
 
-    function drawAll(color) {
+    function drawAll() {
         for (var y = 0; y < sm.options.height; ++y) {
             for (var x = 0; x < sm.options.width; ++x) {
                 sm.draw(x, y, bg);
@@ -73,6 +73,6 @@
     }
     
     chooseRandom();
-    drawAll(color);
+    drawAll();
 
 })();
