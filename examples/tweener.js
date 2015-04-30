@@ -4,10 +4,11 @@
     var numTiles = 32;
     var tileSize = Math.floor(screenSize / numTiles);
     var sm = new Spielmatrix({
-        width:numTiles,
-        height:numTiles,
-        tileSize: tileSize,
-        defaultColor: 0x0,
+        place : document.getElementById('tweener'),
+        width : numTiles,
+        height : numTiles,
+        tileSize : tileSize,
+        defaultColor : 0x0,
         update : function(data) {
             timeElapsed += data.time * 0.003;
             colorAll(timeElapsed);

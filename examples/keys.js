@@ -8,11 +8,12 @@
 
     // Initialize engine
     var sm = new Spielmatrix({
-        width:w,
-        height:h,
-        defaultColor: colors[0],
-        tileSize:50,
-        keydown:keydown
+        place : document.getElementById('keys'),
+        width : w,
+        height : h,
+        defaultColor : colors[0],
+        tileSize : 50,
+        keydown : keydown
     });
 
     drawPlayer();

@@ -7,10 +7,11 @@
 
     // Initialize engine
     var sm = new Spielmatrix({
-        width:w,
-        height:h,
-        defaultColor: colors[0],
-        tileSize:32
+        place : document.getElementById('glyphs'),
+        width : w,
+        height : h,
+        defaultColor : colors[0],
+        tileSize : 32
     });
 
     function setupGrid() {
