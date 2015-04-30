@@ -8,12 +8,15 @@
     var glyphColors = [0x333333, 0xFFFFFF, 0xFF0000];
     var playing = true;
 
+    var container = document.getElementById('lightsout');
+
     // Initialize engine
     var sm = new Spielmatrix({
-        width:w,
-        height:h,
+        place: container,
+        width: w,
+        height: h,
         defaultColor: colors[1],
-        tileSize:128,
+        tileSize: 128,
         mousedown : function(x, y) {
             if (playing) {
                 togglePlus(x, y);
