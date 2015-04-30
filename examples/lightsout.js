@@ -3,33 +3,42 @@
 (function(){
     // Game variables
     var w = h = 5;
-    var colors = [0x000000, 0xFFFF00];
+    var colors = [0x000000, 0xFFFF00, 0x00];
+    var glyphs = [0x86, 0xba, 0x00];
+    var glyphColors = [0x333333, 0xFFFFFF, 0xFF0000];
     var playing = true;
 
     // Initialize engine
     var sm = new Spielmatrix({
-        width:w,
-        height:h,
-        defaultColor: colors[1],
+        place : document.getElementById('lightsout'),
+        width : w,
+        height : h,
+        defaultColor : colors[1],
+        tileSize : 64,
         mousedown : function(x, y) {
             if (playing) {
                 togglePlus(x, y);
                 if (didWin()) {
                     playing = false;
-                    drawSmiley(0x009900);
+                    drawSmiley();
                 }
             } else {
-                // Reset
-                playing = true;
-                drawAll(colors[1]);
+                reset();
             }
         }
-    });  
+    });
 
-    function drawAll(color) {
+    function reset() {
+        drawAll(1);
+        playing = true;
+    }
+
+    function drawAll(index) {
         for (var y = 0; y < h; ++y) {
             for (var x = 0; x < w; ++x) {
-                sm.draw(x, y, color);
+                sm.draw(x, y, colors[index]);
+                sm.glyph(x, y, glyphs[index]);
+                sm.glyphColor(x, y, glyphColors[index]);
             }
         }
     }
@@ -46,7 +55,13 @@
     function toggle(x, y) {
         if (x >= 0 && x < w && y >= 0 && y < h) {
             var tile = sm.tile(x, y);
-            tile.setColor(tile.color == colors[0] ? colors[1] : colors[0]);
+            var index = 0;
+            if (tile.color == colors[0]) {
+                index = 1;
+            }
+            tile.setColor(colors[index]);
+            tile.setGlyph(glyphs[index]);
+            tile.setGlyphColor(glyphColors[index]);
         }
     }
 
@@ -60,14 +75,20 @@
         return true;
     }
 
-    function drawSmiley(color) {
-        sm.draw(1, 1, color);
-        sm.draw(3, 1, color);
-        sm.draw(0, 3, color);
-        sm.draw(1, 4, color);
-        sm.draw(2, 4, color);
-        sm.draw(3, 4, color);
-        sm.draw(4, 3, color);
+    function drawSmiley() {
+        drawAll(2);
+        // Eyes
+        sm.glyph(1, 1, 0xb4);
+        sm.glyph(3, 1, 0xb4);
+        // Mouth
+        sm.glyph(0, 3, 0x16);
+        sm.glyph(1, 3, 0x0b);
+        sm.glyph(2, 3, 0x0b);
+        sm.glyph(3, 3, 0x0b);
+        sm.glyph(4, 3, 0x17);
     }
+
+    // Set initial style
+    reset();
 
 })();
