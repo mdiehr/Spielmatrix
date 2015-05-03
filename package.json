@@ -1,0 +1,16 @@
+{
+  "name": "Spielmatrix",
+  "repository": "https://github.com/mdiehr/Spielmatrix.git",
+  "version":"0.2.0",
+  "devDependencies": {
+    "jshint": "latest",
+    "browserify": "latest",
+    "mocha": "latest",
+    "rimraf": "^2.2.8"
+  },
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "lint": "jshint lib/spielmatrix.js",
+    "test": "mocha test/"
+  }
+}
