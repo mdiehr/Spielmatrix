@@ -2,7 +2,8 @@
 
 (function(){
     // Game variables
-    var w = h = 5;
+    var w = 5;
+    var h = 5;
     var colors = [0x000000, 0xFFFF00, 0x00];
     var glyphs = [0x86, 0xba, 0x00];
     var glyphColors = [0x333333, 0xFFFFFF, 0xFF0000];

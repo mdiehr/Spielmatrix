@@ -10,7 +10,7 @@
   },
   "scripts": {
     "clean": "rimraf dist/*",
-    "lint": "jshint lib/spielmatrix.js",
+    "lint": "jshint . --exclude-path .jshintignore",
     "test": "mocha test/"
   }
 }
