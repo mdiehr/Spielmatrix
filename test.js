@@ -2,8 +2,8 @@
 (function(){
     // Initialization
     var isDown = false;
-    var colors = [0x5D0776, 0xEC8A49, 0xAF3666, 0xF6C84C, 0x4C779A];
-    var colorCount = 0;
+    // var colors = [0x5D0776, 0xEC8A49, 0xAF3666, 0xF6C84C, 0x4C779A];
+    // var colorCount = 0;
     var color = 0;
     var glyph = 0;
     var bg = 0;
