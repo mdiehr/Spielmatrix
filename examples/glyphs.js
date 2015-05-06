@@ -56,7 +56,7 @@
     function drawAll(bg, glyph, color) {
         for (var y = 0; y < sm.options.height; ++y) {
             for (var x = 0; x < sm.options.width; ++x) {
-                sm.draw(x, y, bg);
+                sm.color(x, y, bg);
                 sm.glyph(x, y, glyph);
                 sm.glyphColor(x, y, color);
             }

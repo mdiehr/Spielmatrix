@@ -37,7 +37,7 @@
     function drawAll(index) {
         for (var y = 0; y < h; ++y) {
             for (var x = 0; x < w; ++x) {
-                sm.draw(x, y, colors[index]);
+                sm.color(x, y, colors[index]);
                 sm.glyph(x, y, glyphs[index]);
                 sm.glyphColor(x, y, glyphColors[index]);
             }

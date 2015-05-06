@@ -17,7 +17,7 @@
         mousedown : function(x, y) {
             isDown = true;
             chooseRandom();
-            sm.draw(x, y, bg);
+            sm.color(x, y, bg);
             sm.glyph(x, y, glyph);
             sm.glyphColor(x, y, color);
         },
@@ -29,7 +29,7 @@
         mousemove : function(oldX, oldY, x, y) {
             // sm.log(["mousemove", oldX, oldY, x, y].join(", "));
             if(isDown) {
-                sm.draw(x, y, bg);
+                sm.color(x, y, bg);
                 sm.glyph(x, y, glyph);
                 sm.glyphColor(x, y, color);
             }
@@ -60,7 +60,7 @@
     function drawAll() {
         for (var y = 0; y < sm.options.height; ++y) {
             for (var x = 0; x < sm.options.width; ++x) {
-                sm.draw(x, y, bg);
+                sm.color(x, y, bg);
                 sm.glyph(x, y, glyph);
                 sm.glyphColor(x, y, color);
             }
