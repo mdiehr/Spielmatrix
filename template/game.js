@@ -7,10 +7,12 @@
         defaultColor : 0x000000,
         tileSize : 32,
         mousedown : function(x, y) {
+            // sm.log(["mousedown", x, y].join(", "));
             sm.glyph(x, y, 0xb5);
-            sm.glyphColor(x, y, 0xFF0000);
+            sm.glyphColor(x, y, 0x00FFFF);
         },
         mouseup : function(x, y) {
+            // sm.log(["mouseup", x, y].join(", "));
         },
         mousemove : function(oldX, oldY, x, y) {
             // sm.log(["mousemove", oldX, oldY, x, y].join(", "));
@@ -37,4 +39,12 @@
             // sm.log(["keyup", key].join(", "));
         }
     });
+
+    // Draw a glyph & glyph in every bead 
+    for (var x = 0; x < sm.options.width; ++x) {
+        for (var y = 0; y < sm.options.height; ++y) {
+            sm.glyph(x, y, 0xFC);
+            sm.glyphColor(x, y, 0x232355);
+        }
+    }
 })();
