@@ -10,7 +10,7 @@
     var playing = true;
 
     // Initialize engine
-    var sm = new Spielmatrix({
+    var SM = new Spielmatrix({
         place : document.getElementById('lightsout'),
         width : w,
         height : h,
@@ -28,7 +28,7 @@
         }
     });
 
-    var S = sm.selector();
+    var S = SM.selector();
 
     function reset() {
         drawAll(1);
@@ -43,7 +43,7 @@
     function togglePlus(x, y) {
         function isWithinOneDist(tile) {
             return Math.abs(tile.x - x) + Math.abs(tile.y - y) <= 1;
-        };
+        }
 
         S(isWithinOneDist).exec(toggle);
     }
@@ -59,20 +59,20 @@
     }
 
     function didWin() {
-        return S({color:colors[1]}).length == 0;
+        return S({color:colors[1]}).length === 0;
     }
 
     function drawSmiley() {
         drawAll(2);
         // Eyes
-        sm.glyph(1, 1, 0xb4);
-        sm.glyph(3, 1, 0xb4);
+        SM.glyph(1, 1, 0xb4);
+        SM.glyph(3, 1, 0xb4);
         // Mouth
-        sm.glyph(0, 3, 0x16);
-        sm.glyph(1, 3, 0x0b);
-        sm.glyph(2, 3, 0x0b);
-        sm.glyph(3, 3, 0x0b);
-        sm.glyph(4, 3, 0x17);
+        SM.glyph(0, 3, 0x16);
+        SM.glyph(1, 3, 0x0b);
+        SM.glyph(2, 3, 0x0b);
+        SM.glyph(3, 3, 0x0b);
+        SM.glyph(4, 3, 0x17);
     }
 
     // Set initial style
