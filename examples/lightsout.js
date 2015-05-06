@@ -4,9 +4,11 @@
     // Game variables
     var w = 5;
     var h = 5;
-    var colors = [0x000000, 0xFFFF00, 0x00];
-    var glyphs = [0x86, 0xba, 0x00];
-    var glyphColors = [0x333333, 0xFFFFFF, 0xFF0000];
+    var tileStyles = {
+        "dark" : {color:0x000000, glyph:0x86, glyphColor:0x333333},
+        "light": {color:0xFFFF00, glyph:0xba, glyphColor:0xFFFFFF},
+        "win": {color:0x000000, glyph:0x00, glyphColor:0xFF0000}
+    };
     var playing = true;
 
     // Initialize engine
@@ -31,12 +33,12 @@
     var S = SM.selector();
 
     function reset() {
-        drawAll(1);
+        drawAll("light");
         playing = true;
     }
 
-    function drawAll(index) {
-        S().color(colors[index]).glyph(glyphs[index]).glyphColor(glyphColors[index]);
+    function drawAll(style) {
+        S().set(tileStyles[style]);
     }
 
     // Toggle the 5 tiles
@@ -49,18 +51,16 @@
     }
 
     function toggle(tile) {
-        var index = 0;
-        if (tile.color == colors[0])
-            index = 1;
-        tile.set({color : colors[index], glyph : glyphs[index], glyphColor : glyphColors[index]});
+        var style = (tile.color === tileStyles["dark"].color) ? "light" : "dark";
+        tile.set(tileStyles[style]);
     }
 
     function didWin() {
-        return S({color:colors[1]}).length === 0;
+        return S({color:tileStyles["light"].color}).length === 0;
     }
 
     function drawSmiley() {
-        drawAll(2);
+        drawAll("win");
         // Eyes
         SM.glyph(1, 1, 0xb4);
         SM.glyph(3, 1, 0xb4);
