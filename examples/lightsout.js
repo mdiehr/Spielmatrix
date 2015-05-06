@@ -1,6 +1,7 @@
 // LightsOut example for the Spielmatrix game engine
 
 (function(){
+    
     // Game variables
     var w = 5;
     var h = 5;
@@ -32,16 +33,18 @@
 
     var S = SM.selector();
 
+    // Resets game to the initial state
     function reset() {
         drawAll("light");
         playing = true;
     }
 
+    // Sets every bead to the same style
     function drawAll(style) {
         S().set(tileStyles[style]);
     }
 
-    // Toggle the 5 tiles
+    // Toggle the 5 tiles in a + pattern
     function togglePlus(x, y) {
         function isWithinOneDist(tile) {
             return Math.abs(tile.x - x) + Math.abs(tile.y - y) <= 1;
@@ -50,15 +53,18 @@
         S(isWithinOneDist).exec(toggle);
     }
 
+    // Toggle the style of one tile between light and dark
     function toggle(tile) {
         var style = (tile.color === tileStyles["dark"].color) ? "light" : "dark";
         tile.set(tileStyles[style]);
     }
 
+    // Returns true if there are no more light tiles
     function didWin() {
         return S({color:tileStyles["light"].color}).length === 0;
     }
 
+    // Draws a smiley face, because we won the game
     function drawSmiley() {
         drawAll("win");
         // Eyes
