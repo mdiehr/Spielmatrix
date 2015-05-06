@@ -14,7 +14,6 @@
         place : document.getElementById('lightsout'),
         width : w,
         height : h,
-        defaultColor : colors[1],
         tileSize : 64,
         mousedown : function(x, y) {
             if (playing) {
@@ -29,51 +28,38 @@
         }
     });
 
+    var S = sm.selector();
+
     function reset() {
         drawAll(1);
         playing = true;
     }
 
     function drawAll(index) {
-        for (var y = 0; y < h; ++y) {
-            for (var x = 0; x < w; ++x) {
-                sm.color(x, y, colors[index]);
-                sm.glyph(x, y, glyphs[index]);
-                sm.glyphColor(x, y, glyphColors[index]);
-            }
-        }
+        S().color(colors[index]).glyph(glyphs[index]).glyphColor(glyphColors[index]);
     }
 
     // Toggle the 5 tiles
     function togglePlus(x, y) {
-        toggle(x, y);
-        toggle(x-1, y);
-        toggle(x+1, y);
-        toggle(x, y-1);
-        toggle(x, y+1);
+        function isWithinOneDist(tile) {
+            return Math.abs(tile.x - x) + Math.abs(tile.y - y) <= 1;
+        };
+
+        S(isWithinOneDist).exec(toggle);
     }
 
-    function toggle(x, y) {
-        if (x >= 0 && x < w && y >= 0 && y < h) {
-            var tile = sm.tile(x, y);
-            var index = 0;
-            if (tile.color == colors[0]) {
-                index = 1;
-            }
-            tile.setColor(colors[index]);
-            tile.setGlyph(glyphs[index]);
-            tile.setGlyphColor(glyphColors[index]);
+    function toggle(tile) {
+        var index = 0;
+        if (tile.color == colors[0]) {
+            index = 1;
         }
+        tile.setColor(colors[index]);
+        tile.setGlyph(glyphs[index]);
+        tile.setGlyphColor(glyphColors[index]);
     }
 
     function didWin() {
-        for (var y = 0; y < h; ++y) {
-            for (var x = 0; x < w; ++x) {
-                if (sm.tile(x, y).color == colors[1])
-                    return false;
-            }
-        }
-        return true;
+        return S({color:colors[1]}).length == 0;
     }
 
     function drawSmiley() {

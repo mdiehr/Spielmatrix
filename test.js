@@ -57,14 +57,10 @@
         }
     });
 
+    var S = sm.selector();
+
     function drawAll() {
-        for (var y = 0; y < sm.options.height; ++y) {
-            for (var x = 0; x < sm.options.width; ++x) {
-                sm.color(x, y, bg);
-                sm.glyph(x, y, glyph);
-                sm.glyphColor(x, y, color);
-            }
-        }
+        S().color(bg).glyph(glyph).glyphColor(color);
     }
 
     function chooseRandom() {
