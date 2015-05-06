@@ -19,11 +19,11 @@
     drawPlayer();
 
     function drawPlayer() {
-        sm.draw(player.x, player.y, player.color);
+        sm.color(player.x, player.y, player.color);
     }
 
     function erasePlayer() {
-        sm.draw(player.x, player.y, colors[2]);
+        sm.color(player.x, player.y, colors[2]);
     }
 
     function keydown(key) {

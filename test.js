@@ -2,8 +2,8 @@
 (function(){
     // Initialization
     var isDown = false;
-    var colors = [0x5D0776, 0xEC8A49, 0xAF3666, 0xF6C84C, 0x4C779A];
-    var colorCount = 0;
+    // var colors = [0x5D0776, 0xEC8A49, 0xAF3666, 0xF6C84C, 0x4C779A];
+    // var colorCount = 0;
     var color = 0;
     var glyph = 0;
     var bg = 0;
@@ -17,7 +17,7 @@
         mousedown : function(x, y) {
             isDown = true;
             chooseRandom();
-            sm.draw(x, y, bg);
+            sm.color(x, y, bg);
             sm.glyph(x, y, glyph);
             sm.glyphColor(x, y, color);
         },
@@ -29,7 +29,7 @@
         mousemove : function(oldX, oldY, x, y) {
             // sm.log(["mousemove", oldX, oldY, x, y].join(", "));
             if(isDown) {
-                sm.draw(x, y, bg);
+                sm.color(x, y, bg);
                 sm.glyph(x, y, glyph);
                 sm.glyphColor(x, y, color);
             }
@@ -57,14 +57,10 @@
         }
     });
 
+    var S = sm.selector();
+
     function drawAll() {
-        for (var y = 0; y < sm.options.height; ++y) {
-            for (var x = 0; x < sm.options.width; ++x) {
-                sm.draw(x, y, bg);
-                sm.glyph(x, y, glyph);
-                sm.glyphColor(x, y, color);
-            }
-        }
+        S().color(bg).glyph(glyph).glyphColor(color);
     }
 
     function chooseRandom() {

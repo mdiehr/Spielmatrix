@@ -1,19 +1,22 @@
 // LightsOut example for the Spielmatrix game engine
 
 (function(){
+    
     // Game variables
-    var w = h = 5;
-    var colors = [0x000000, 0xFFFF00, 0x00];
-    var glyphs = [0x86, 0xba, 0x00];
-    var glyphColors = [0x333333, 0xFFFFFF, 0xFF0000];
+    var w = 5;
+    var h = 5;
+    var tileStyles = {
+        "dark" : {color:0x000000, glyph:0x86, glyphColor:0x333333},
+        "light": {color:0xFFFF00, glyph:0xba, glyphColor:0xFFFFFF},
+        "win": {color:0x000000, glyph:0x00, glyphColor:0xFF0000}
+    };
     var playing = true;
 
     // Initialize engine
-    var sm = new Spielmatrix({
+    var SM = new Spielmatrix({
         place : document.getElementById('lightsout'),
         width : w,
         height : h,
-        defaultColor : colors[1],
         tileSize : 64,
         mousedown : function(x, y) {
             if (playing) {
@@ -28,64 +31,51 @@
         }
     });
 
+    var S = SM.selector();
+
+    // Resets game to the initial state
     function reset() {
-        drawAll(1);
+        drawAll("light");
         playing = true;
     }
 
-    function drawAll(index) {
-        for (var y = 0; y < h; ++y) {
-            for (var x = 0; x < w; ++x) {
-                sm.draw(x, y, colors[index]);
-                sm.glyph(x, y, glyphs[index]);
-                sm.glyphColor(x, y, glyphColors[index]);
-            }
-        }
+    // Sets every bead to the same style
+    function drawAll(style) {
+        S().set(tileStyles[style]);
     }
 
-    // Toggle the 5 tiles
+    // Toggle the 5 tiles in a + pattern
     function togglePlus(x, y) {
-        toggle(x, y);
-        toggle(x-1, y);
-        toggle(x+1, y);
-        toggle(x, y-1);
-        toggle(x, y+1);
-    }
-
-    function toggle(x, y) {
-        if (x >= 0 && x < w && y >= 0 && y < h) {
-            var tile = sm.tile(x, y);
-            var index = 0;
-            if (tile.color == colors[0]) {
-                index = 1;
-            }
-            tile.setColor(colors[index]);
-            tile.setGlyph(glyphs[index]);
-            tile.setGlyphColor(glyphColors[index]);
+        function isWithinOneDist(tile) {
+            return Math.abs(tile.x - x) + Math.abs(tile.y - y) <= 1;
         }
+
+        S(isWithinOneDist).exec(toggle);
     }
 
+    // Toggle the style of one tile between light and dark
+    function toggle(tile) {
+        var style = (tile.color === tileStyles["dark"].color) ? "light" : "dark";
+        tile.set(tileStyles[style]);
+    }
+
+    // Returns true if there are no more light tiles
     function didWin() {
-        for (var y = 0; y < h; ++y) {
-            for (var x = 0; x < w; ++x) {
-                if (sm.tile(x, y).color == colors[1])
-                    return false;
-            }
-        }
-        return true;
+        return S({color:tileStyles["light"].color}).length === 0;
     }
 
+    // Draws a smiley face, because we won the game
     function drawSmiley() {
-        drawAll(2);
+        drawAll("win");
         // Eyes
-        sm.glyph(1, 1, 0xb4);
-        sm.glyph(3, 1, 0xb4);
+        SM.glyph(1, 1, 0xb4);
+        SM.glyph(3, 1, 0xb4);
         // Mouth
-        sm.glyph(0, 3, 0x16);
-        sm.glyph(1, 3, 0x0b);
-        sm.glyph(2, 3, 0x0b);
-        sm.glyph(3, 3, 0x0b);
-        sm.glyph(4, 3, 0x17);
+        SM.glyph(0, 3, 0x16);
+        SM.glyph(1, 3, 0x0b);
+        SM.glyph(2, 3, 0x0b);
+        SM.glyph(3, 3, 0x0b);
+        SM.glyph(4, 3, 0x17);
     }
 
     // Set initial style

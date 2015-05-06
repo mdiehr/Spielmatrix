@@ -1,0 +1,22 @@
+{
+  "name": "Spielmatrix",
+  "repository": "https://github.com/mdiehr/Spielmatrix.git",
+  "version":"0.2.0",
+  "devDependencies": {
+    "jshint": "latest",
+    "browserify": "latest",
+    "mocha": "latest",
+    "rimraf": "^2.2.8",
+    "mkdirp": "latest"
+  },
+  "scripts": {
+    "lint": "jshint . --exclude-path .jshintignore",
+    "test": "mocha test/",
+    "clean": "rimraf dist/*",
+    "distfolders": "node bin/distfolders.js",
+    "browserify": "browserify lib/main.js -o dist/spielmatrix/spielmatrix.bundle.js",
+    "copy": "copy lib\\pixi\\pixi.min.js dist\\spielmatrix\\ && copy template\\*.* dist\\ && copy lib\\*.css dist\\spielmatrix\\",
+    "build": "npm run distfolders && npm run browserify && npm run copy",
+    "rebuild": "npm run clean && npm run build"
+  }
+}

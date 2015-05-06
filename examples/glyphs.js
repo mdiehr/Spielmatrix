@@ -15,13 +15,13 @@
     });
 
     function setupGrid() {
-        drawAll(colors[0], 0, colors[2])
+        drawAll(colors[0], 0, colors[2]);
 
         var glyph = 0;
         var alternate = false;
         for (var y = 0; y < sm.options.height; y += 2) {
             for (var x = 0; x < sm.options.width; x += 2) {
-                alternate = ((x/2 + y/2) % 2) == 0;
+                alternate = ((x/2 + y/2) % 2) === 0;
 
                 sm.color(x, y, colors[alternate ? 0 : 1]);
                 sm.color(x+1, y, colors[alternate ? 0 : 1]);
@@ -56,7 +56,7 @@
     function drawAll(bg, glyph, color) {
         for (var y = 0; y < sm.options.height; ++y) {
             for (var x = 0; x < sm.options.width; ++x) {
-                sm.draw(x, y, bg);
+                sm.color(x, y, bg);
                 sm.glyph(x, y, glyph);
                 sm.glyphColor(x, y, color);
             }

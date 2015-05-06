@@ -1,0 +1,8 @@
+{
+	"undef": true,
+	"unused": "vars",
+	"browser": true,
+	"devel": true,
+	"browserify": true,
+	"predef": [ "Spielmatrix", "PIXI", "kd"]
+}

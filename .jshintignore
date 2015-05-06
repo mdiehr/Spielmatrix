@@ -1,0 +1,6 @@
+# Dependency directory
+node_modules
+lib/keydrown
+lib/pixi
+dist
+*.min.js
