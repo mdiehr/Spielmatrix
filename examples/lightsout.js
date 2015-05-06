@@ -50,12 +50,9 @@
 
     function toggle(tile) {
         var index = 0;
-        if (tile.color == colors[0]) {
+        if (tile.color == colors[0])
             index = 1;
-        }
-        tile.setColor(colors[index]);
-        tile.setGlyph(glyphs[index]);
-        tile.setGlyphColor(glyphColors[index]);
+        tile.set({color : colors[index], glyph : glyphs[index], glyphColor : glyphColors[index]});
     }
 
     function didWin() {
