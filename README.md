@@ -154,12 +154,6 @@ Sets the color of the tile at x, y
 sm.color(x, y, color);
 ```
 
-#### draw
-Sets the color of the tile at x, y. Alias of color.
-```js
-sm.draw(x, y, color);
-```
-
 #### glyph
 Changes the glyph of the tile at x, y.
 ```js
@@ -170,6 +164,18 @@ sm.glyph(x, y, index);
 Changes the color of the glyph of the tile at x, y.
 ```js
 sm.glyphColor(x, y, color);
+```
+
+#### data
+Changes the stored data of the tile at x, y.
+```js
+sm.data(x, y, color);
+```
+
+#### set
+Sets multiple properties of the tile at x, y.
+```js
+sm.set(x, y, {color:color, glyph:glyph, glyphColor:glyphColor, data:data});
 ```
 
 #### tile
@@ -208,4 +214,16 @@ tile.setColorGlyph(color);
 Changes the glyph on the tile.
 ```js
 tile.setGlyph(index);
+```
+
+#### Tile.prototype.setData
+Changes the stored data in the tile.
+```js
+tile.setData(data);
+```
+
+#### Tile.prototype.set
+Sets multiple properties of the tile.
+```js
+tile.set({color:color, glyph:glyph, glyphColor:glyphColor, data:data});
 ```
