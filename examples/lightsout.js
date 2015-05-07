@@ -55,13 +55,13 @@
 
     // Toggle the style of one tile between light and dark
     function toggle(tile) {
-        var style = (tile.color === tileStyles["dark"].color) ? "light" : "dark";
+        var style = (tile.color === tileStyles.dark.color) ? "light" : "dark";
         tile.set(tileStyles[style]);
     }
 
     // Returns true if there are no more light tiles
     function didWin() {
-        return S({color:tileStyles["light"].color}).length === 0;
+        return S({color:tileStyles.light.color}).length === 0;
     }
 
     // Draws a smiley face, because we won the game
