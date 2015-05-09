@@ -2,60 +2,18 @@
 A tile-based game engine for prototyping abstract games.
 
 ## Getting Started
-Create a new .js file and name it game.js.
+Download the game template [Spielmatrix.zip](https://github.com/mdiehr/Spielmatrix/blob/master/release/Spielmatrix.zip) and unzip it somewhere on your hard drive.
 
-Create a new .html file and name it whatever you'd like. Place this in it:
-
-```html
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>Spielmatrix</title>
-    <script src="./lib/spielmatrix.js"></script>
-    <script src="./lib/tile.js"></script>
-    <script src="./lib/keyboard.js"></script>
-    <script src="./lib/mouse.js"></script>
-    <script src="./lib/utilities.js"></script>
-    <script src="./bin/keydrown.js"></script>
-    <script src="./bin/pixi.js"></script>
-</head>
-    <body>
-        <script src="./game.js"></script>
-    </body>
-</html>
-```
-
-## Example game.js template
-
-```js
-// Game.js file for Spielmatrix
-(function(){
-    // Initialization
-    var SM = new Spielmatrix({
-        width:10,
-        height:10,
-        defaultColor: 0x336699,
-        tileSize: 32,
-        mousedown : function(x, y) {},
-        mouseup : function(x, y) {},
-        mousemove : function(oldX, oldY, x, y) {},
-        mouseenter : function(x, y) {},
-        mouseleave : function(x, y) {},
-        mouseout : function(x, y) {},
-        mouseover : function(x, y) {},
-        update : function(data) {},
-        keydown : function(key) {},
-        keyup : function(key) {}
-    });
-})();
-```
+The template contains a game.js file [like this one](https://github.com/mdiehr/Spielmatrix/blob/master/template/game.js) that you can modify to create your game.
 
 ## API
 Creating a Spielmatrix instance:
 ```js
 var sm = new Spielmatrix(options);
 ```
-options is an object which specifies how the Spielmatrix instance will look and behave.
+'options' is an object which specifies how the Spielmatrix instance will look and behave.
+
+This is done for you in the template.
 
 ### Basic options
 - width: The number of horizontal tiles. Defaults to 10.
