@@ -8,7 +8,7 @@
     var glyph = 0;
     var bg = 0;
 
-    var sm = new Spielmatrix({
+    var SM = new Spielmatrix({
         place : document.getElementById('test'),
         width : 20,
         height : 20,
@@ -17,9 +17,9 @@
         mousedown : function(x, y) {
             isDown = true;
             chooseRandom();
-            sm.color(x, y, bg);
-            sm.glyph(x, y, glyph);
-            sm.glyphColor(x, y, color);
+            SM.color(x, y, bg);
+            SM.glyph(x, y, glyph);
+            SM.glyphColor(x, y, color);
         },
         mouseup : function(x, y) {
             if (isDown) {
@@ -27,49 +27,51 @@
             }
         },
         mousemove : function(oldX, oldY, x, y) {
-            // sm.log(["mousemove", oldX, oldY, x, y].join(", "));
+            // SM.log(["mousemove", oldX, oldY, x, y].join(", "));
             if(isDown) {
-                sm.color(x, y, bg);
-                sm.glyph(x, y, glyph);
-                sm.glyphColor(x, y, color);
+                SM.color(x, y, bg);
+                SM.glyph(x, y, glyph);
+                SM.glyphColor(x, y, color);
             }
         },
         mouseenter : function(x, y) {
-            // sm.log(["mouseenter", x, y].join(", "));
+            // SM.log(["mouseenter", x, y].join(", "));
         },
         mouseleave : function(x, y) {
-            // sm.log(["mouseleave", x, y].join(", "));
+            // SM.log(["mouseleave", x, y].join(", "));
         },
         mouseout : function(x, y) {
-            // sm.log(["mouseout", x, y].join(", "));
+            // SM.log(["mouseout", x, y].join(", "));
         },
         mouseover : function(x, y) {
-            // sm.log(["mouseover", x, y].join(", "));
+            // SM.log(["mouseover", x, y].join(", "));
         },
         update : function(data) {
             // drawAll(colors[++colorCount%colors.length]);
         },
         keydown : function(key) {
-            sm.log(["keydown", key].join(", "));
+            SM.log(["keydown", key].join(", "));
         },
         keyup : function(key) {
-            sm.log(["keyup", key].join(", "));
+            SM.log(["keyup", key].join(", "));
         }
     });
 
-    var S = sm.selector();
+    var S = SM.selector();
 
     function drawAll() {
         S().color(bg).glyph(glyph).glyphColor(color);
     }
 
     function chooseRandom() {
-        color = sm.randBetween(0x0, 0xFFFFFF);
-        glyph = sm.randBetween(0, 255);
-        bg = sm.randBetween(0x0, 0xFFFFFF);
+        color = SM.randBetween(0x0, 0xFFFFFF);
+        glyph = SM.randBetween(0, 255);
+        bg = SM.randBetween(0x0, 0xFFFFFF);
     }
     
     chooseRandom();
     drawAll();
+
+    S().rand(20).set({glyph:0x40, glyphColor:0xFFFFFF});
 
 })();
