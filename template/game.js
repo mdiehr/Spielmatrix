@@ -5,7 +5,6 @@
         width : 10,
         height : 10,
         defaultColor : 0x000000,
-        tileSize : 32,
         mousedown : function(x, y) {
             // SM.log(["mousedown", x, y].join(", "));
             SM.glyph(x, y, 0xb5);
