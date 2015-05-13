@@ -17,7 +17,6 @@
         place : document.getElementById('lightsout'),
         width : w,
         height : h,
-        tileSize : 64,
         mousedown : function(x, y) {
             if (playing) {
                 togglePlus(x, y);
