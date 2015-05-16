@@ -3,9 +3,9 @@
 (function(){
     
     // Game constants
-    var w = 15;
+    var w = 17;
     var h = 10;
-    var uiHeight = 3;
+    var uiHeight = 7;
     var bombCount = 10;
     var safeCount = (w * h) - bombCount;
 
@@ -87,15 +87,6 @@
         mode = "reveal";
     }
 
-    function drawUI() {
-        S(function(tile){return tile.y < uiHeight;}).set(styles.ui);
-        writeText(1, 1, "Reveal", {glyphColor:0x449933});
-        writeText(8, 1, "Flag",   {glyphColor:0x998833});
-        writeText(13, 1, "\xb9",  {glyphColor:0x994433});
-        // The reveal area
-        outlineArea(0, 0, 8, 3);
-    }
-
     // Fills out a number on a particular tile
     function determineNumber(tile) {
         var tiles = S(withinDistance.bind(null, 1, tile));
@@ -117,6 +108,20 @@
 
     function showVictory() {
         S(0,0).color(0x0000FF);
+    }
+
+
+    function drawUI() {
+        S(function(tile){return tile.y < uiHeight;}).set(styles.ui);
+        writeText(1, 1, "\x8d MINESWEEPER \x8d", {glyphColor:0xEDFF00});
+        writeText(3, 1, "MINESWEEPER", {glyphColor:0xED7700});
+        S(function(tile){return tile.y < 3;}).color(0);
+        writeText(1, 4, "Reveal", {glyphColor:0x449933});
+        writeText(9, 4, "Flag",   {glyphColor:0x998833});
+        writeText(15, 4, "\xb9",  {glyphColor:0x994433});
+        S({y:uiHeight-1}).color(0);
+        // The reveal button
+        outlineArea(0, 3, 8, 3);
     }
 
     // Writes text to a location
