@@ -10,8 +10,7 @@
         place : document.getElementById('glyphs'),
         width : w,
         height : h,
-        defaultColor : colors[0],
-        tileSize : 32
+        defaultColor : colors[0]
     });
 
     function setupGrid() {

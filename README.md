@@ -16,10 +16,50 @@ var sm = new Spielmatrix(options);
 This is done for you in the template.
 
 ### Basic options
+- place: The HTML node to place the game inside. Defaults to document.body.
 - width: The number of horizontal tiles. Defaults to 10.
 - height: The number of vertical tiles. Defaults to 10.
 - defaultColor : The starting color of all tiles. Defaults to 0x336699.
 - tileSize: The pixel size of all tiles. Defaults to 50.
+- renderWidthMax: The maximum width of the rendering area, in pixels. Defaults to 480.
+- renderWidthMin: The minimum width of the rendering area, in pixels. Defaults to 240.
+- pixelPerfect: Set to true if you want to ensure tiles are rendered at an integer multiple of their base size, to avoid distortion. Defaults to true.
+- resizeCanvas: Set to true if you want the canvas to resize dynamically. Defaults to true.
+
+### HTML Attribute Options
+
+You can add attributes to the node that the game runs in to override certain basic options.
+
+#### sm-width-max
+Sets the maximum width of the drawing area, in pixels. Overrides the "renderWidthMax" option. Defaults to 480.
+```html
+sm-width-max="480"
+```
+
+#### sm-width-min
+Sets the minimum width of the drawing area, in pixels. Overrides the "renderWidthMin" option. Defaults to 240.
+```html
+sm-width-min="240"
+```
+
+#### sm-pixel-perfect
+Changes the behavior of how the rendering area is allowed to resize. Overrides the "pixelPerfect" option. If true, the tiles are forced to render at an integer multiple of their base size (8px). If false, the tiles can be any integer size. Defaults to true.
+```html
+sm-pixel-perfect="true"
+```
+
+#### sm-resize-canvas
+If set to true, the canvas is allowed to dynamically resize. Otherwise, it is set to the renderWidthMax initially, and does not change. Overrides the "resizeCanvas" option. Defaults to true.
+```html
+sm-resize-canvas="true"
+```
+
+### Complete div example
+
+```html
+<div id="test" sm-width-max="1024" sm-width-min="320" sm-pixel-perfect="true" sm-resize-canvas="true"></div>
+```
+
 
 ### Spielmatrix Events
 You can register event methods which are called whenever something of interest happens in the engine.

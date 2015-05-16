@@ -12,8 +12,6 @@
         place : document.getElementById('test'),
         width : 20,
         height : 20,
-        defaultColor : 0x007700,
-        tileSize : 32,
         mousedown : function(x, y) {
             isDown = true;
             chooseRandom();
