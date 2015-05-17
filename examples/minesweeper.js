@@ -22,16 +22,17 @@
 
     function Behavior() {
         this.type = types.empty;
-        this.state = states.hidden;
-        this.mark = marks.none;
         this.clicked = null;
-        this.activate = function() {
-            if (this.clicked) this.clicked();
-        };
     }
+
+    Behavior.prototype.activate = function() {
+        if (this.clicked) this.clicked();
+    };
 
     function GameBehavior() {
         Behavior.call(this);
+        this.state = states.hidden;
+        this.mark = marks.none;
         this.clicked = reveal;
     }
     GameBehavior.prototype = Object.create(Behavior.prototype);
