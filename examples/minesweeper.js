@@ -157,7 +157,7 @@
 
     function placeBombs() {
         S(hasGameTile)
-            .where(function(tile) {return tile.data.state === states.hidden})
+            .where(function(tile) {return tile.data.state === states.hidden;})
             .rand(bombCount)
             .exec(function(tile) { tile.data.hasBomb = true; });
     }
