@@ -4,7 +4,7 @@
     
     // Game constants
     var w = 15;
-    var h = 11;
+    var h = 15;
     var uiHeight = 7;
     var bombCount = 20;
     var safeCount = (w * h) - bombCount;
