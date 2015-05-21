@@ -5,14 +5,12 @@
   "devDependencies": {
     "jshint": "latest",
     "browserify": "latest",
-    "mocha": "latest",
     "rimraf": "^2.2.8",
     "archiver": "latest",
     "mkdirp": "latest"
   },
   "scripts": {
     "lint": "jshint . --exclude-path .jshintignore",
-    "test": "mocha test/",
     "clean": "rimraf dist/* && rimraf release/*",
     "distfolders": "node bin/distfolders.js",
     "browserify": "browserify lib/main.js -o dist/spielmatrix/spielmatrix.bundle.js",

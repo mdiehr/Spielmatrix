@@ -1,0 +1,17 @@
+load:
+  - ../lib/spielmatrix.js
+  - ../lib/assets.js
+  - ../lib/tile.js
+  - ../lib/rendering.js
+  - ../lib/utilities.js
+  - ../lib/keyboard.js
+  - ../lib/selector.js
+  - ../lib/keydrown/keydrown.js
+  - ../lib/pixi/pixi.js
+
+test:
+  - selector.test.js
+
+serve:
+  - ../lib/spielmatrix.css
+  - test.html
