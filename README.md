@@ -30,34 +30,34 @@ This is done for you in the template.
 
 You can add attributes to the node that the game runs in to override certain basic options.
 
-#### sm-width-max
+#### data-width-max
 Sets the maximum width of the drawing area, in pixels. Overrides the "renderWidthMax" option. Defaults to 480.
 ```html
-sm-width-max="480"
+data-width-max="480"
 ```
 
-#### sm-width-min
+#### data-width-min
 Sets the minimum width of the drawing area, in pixels. Overrides the "renderWidthMin" option. Defaults to 240.
 ```html
-sm-width-min="240"
+data-width-min="240"
 ```
 
-#### sm-pixel-perfect
+#### data-pixel-perfect
 Changes the behavior of how the rendering area is allowed to resize. Overrides the "pixelPerfect" option. If true, the tiles are forced to render at an integer multiple of their base size (8px). If false, the tiles can be any integer size. Defaults to true.
 ```html
-sm-pixel-perfect="true"
+data-pixel-perfect="true"
 ```
 
-#### sm-resize-canvas
+#### data-resize-canvas
 If set to true, the canvas is allowed to dynamically resize. Otherwise, it is set to the renderWidthMax initially, and does not change. Overrides the "resizeCanvas" option. Defaults to true.
 ```html
-sm-resize-canvas="true"
+data-resize-canvas="true"
 ```
 
 ### Complete div example
 
 ```html
-<div id="test" sm-width-max="1024" sm-width-min="320" sm-pixel-perfect="true" sm-resize-canvas="true"></div>
+<div id="test" data-width-max="1024" data-width-min="320" data-pixel-perfect="true" data-resize-canvas="true"></div>
 ```
 
 
