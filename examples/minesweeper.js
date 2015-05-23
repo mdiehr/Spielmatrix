@@ -77,7 +77,7 @@
     var styles = {
         "empty" :   {color:0x666666, glyph:0xFC, glyphColor:0x333333},
         "bomb":     {color:0x333333, glyph:0x2A, glyphColor:0xFF0000},
-        "revealed": {color:0x444444, glyph:0x00, glyphColor:0x777777},
+        "revealed": {color:0x444444, glyph:0x00, glyphColor:0x998877},
         "none":     {color:0x666666, glyph:0xFC, glyphColor:0x333333},
         "flag":     {color:0x333333, glyph:0xCA, glyphColor:0xDDDDAA},
         "question": {color:0x333333, glyph:0x3F, glyphColor:0x998822},
