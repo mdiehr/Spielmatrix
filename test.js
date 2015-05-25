@@ -18,6 +18,7 @@
             SM.color(x, y, bg);
             SM.glyph(x, y, glyph);
             SM.glyphColor(x, y, color);
+            SM.play('Blip_Select4');
         },
         mouseup : function(x, y) {
             if (isDown) {
