@@ -74,8 +74,8 @@
     }
 
     function selectFromList(list) {
-        return list[SM.randBetween(0, list.length-1)]
-    };
+        return list[SM.randBetween(0, list.length-1)];
+    }
 
     initialize();
 
