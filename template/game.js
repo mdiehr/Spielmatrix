@@ -9,6 +9,7 @@
             // SM.log(["mousedown", x, y].join(", "));
             SM.glyph(x, y, 0xb5);
             SM.glyphColor(x, y, 0x00FFFF);
+            SM.play('Pickup_Coin143');
         },
         mouseup : function(x, y) {
             // SM.log(["mouseup", x, y].join(", "));

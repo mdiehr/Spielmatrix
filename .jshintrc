@@ -4,5 +4,5 @@
 	"browser": true,
 	"devel": true,
 	"browserify": true,
-	"predef": [ "Spielmatrix", "PIXI", "kd"]
+	"predef": [ "Spielmatrix", "PIXI", "kd", "Howl"]
 }
