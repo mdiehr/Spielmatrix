@@ -7,16 +7,18 @@
     "browserify": "latest",
     "rimraf": "^2.2.8",
     "archiver": "latest",
-    "mkdirp": "latest"
+    "mkdirp": "latest",
+    "minifier": "latest"
   },
   "scripts": {
     "lint": "jshint . --exclude-path .jshintignore",
     "clean": "rimraf dist/* && rimraf release/*",
     "distfolders": "node bin/distfolders.js",
     "browserify": "browserify lib/main.js -o dist/spielmatrix/spielmatrix.bundle.js",
-    "copy": "copy lib\\pixi\\pixi.min.js dist\\spielmatrix\\ && copy template\\*.* dist\\ && copy lib\\*.css dist\\spielmatrix\\ && copy sounds\\*.* dist\\sounds\\",
+    "minify": "minify dist/spielmatrix/spielmatrix.bundle.js",
+    "copy": "copy lib\\pixi\\pixi.min.js dist\\spielmatrix\\ && copy template\\*.* dist\\ && copy lib\\*.css dist\\spielmatrix\\",
     "zip": "node bin/zipDist.js",
-    "build": "npm run distfolders && npm run browserify && npm run copy && npm run zip",
+    "build": "npm run distfolders && npm run browserify && npm run minify && npm run copy && npm run zip",
     "rebuild": "npm run clean && npm run build"
   }
 }
