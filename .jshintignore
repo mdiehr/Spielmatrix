@@ -2,6 +2,7 @@
 node_modules
 lib/keydrown
 lib/pixi
+lib/howler
 test
 dist
 *.min.js

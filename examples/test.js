@@ -12,12 +12,14 @@
         place : document.getElementById('test'),
         width : 20,
         height : 20,
+        preloadSounds : ['Blip1'],
         mousedown : function(x, y) {
             isDown = true;
             chooseRandom();
             SM.color(x, y, bg);
             SM.glyph(x, y, glyph);
             SM.glyphColor(x, y, color);
+            SM.play('Blip1');
         },
         mouseup : function(x, y) {
             if (isDown) {
