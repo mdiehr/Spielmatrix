@@ -25,6 +25,8 @@ This is done for you in the template.
 - renderWidthMin: The minimum width of the rendering area, in pixels. Defaults to 240.
 - pixelPerfect: Set to true if you want to ensure tiles are rendered at an integer multiple of their base size, to avoid distortion. Defaults to true.
 - resizeCanvas: Set to true if you want the canvas to resize dynamically. Defaults to true.
+- audioPath: The location to load sound effects from. Defaults to "./sounds/".
+- preloadAudio: An array of sound effects to preload. Defaults to null.
 
 ### HTML Attribute Options
 
@@ -196,6 +198,18 @@ SM.log("Hello");
 ```
 
 
+### Audio
+
+#### SM.play(soundName)
+Plays the specified sound file. The following sounds are built into the engine:
+
+```
+'Appear', 'Blip1', 'Blip2', 'Blip3', 'Blip4', 'Coin1', 'Coin2', 'Coin3', 'Explosion1', 'Explosion2', 'Explosion3', 'Export', 'Hit1', 'Hit2', 'Jump1', 'Jump2', 'Laser1', 'Laser2', 'Laser3', 'Modem', 'Powerup1', 'Powerup2', 'Powerup3', 'UhOh1', 'UhOh2', 'UhOh3', 'Yarp'
+```
+
+It's recommended to use the 'preloadAudio' option for any sounds that you plan on using in your game.
+
+
 ### Tile Methods
 
 #### Tile.prototype.setColor(color)
@@ -258,6 +272,7 @@ The data property of a tile.
 ```js
 var data = tile.data;
 ```
+
 
 ### Tile Selector
 You can get a reference to the powerful Tile Selector by invoking the selector() method.
