@@ -12,6 +12,7 @@
         place : document.getElementById('test'),
         width : 20,
         height : 20,
+        preloadSounds : ['Blip1'],
         mousedown : function(x, y) {
             isDown = true;
             chooseRandom();
