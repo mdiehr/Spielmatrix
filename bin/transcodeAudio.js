@@ -2,8 +2,8 @@
 // https://www.npmjs.com/package/sox
 // http://sox.sourceforge.net/Docs/Features
 
-var sox = require('sox-stream')
-var fs  = require('fs')
+var sox = require('sox-stream');
+var fs  = require('fs');
 var _ = require('lodash');
 
 var inType = '.wav';
