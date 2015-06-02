@@ -1,7 +1,7 @@
 {
   "name": "Spielmatrix",
   "repository": "https://github.com/mdiehr/Spielmatrix.git",
-  "version":"0.2.0",
+  "version":"1.0.0",
   "devDependencies": {
     "jshint": "^2.8.0",
     "browserify": "^10.2.3",
