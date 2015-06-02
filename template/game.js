@@ -5,11 +5,11 @@
         width : 10,
         height : 10,
         defaultColor : 0x000000,
-        tileSize : 32,
         mousedown : function(x, y) {
             // SM.log(["mousedown", x, y].join(", "));
             SM.glyph(x, y, 0xb5);
             SM.glyphColor(x, y, 0x00FFFF);
+            SM.play('Blip1');
         },
         mouseup : function(x, y) {
             // SM.log(["mouseup", x, y].join(", "));

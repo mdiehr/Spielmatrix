@@ -16,10 +16,52 @@ var sm = new Spielmatrix(options);
 This is done for you in the template.
 
 ### Basic options
+- place: The HTML node to place the game inside. Defaults to document.body.
 - width: The number of horizontal tiles. Defaults to 10.
 - height: The number of vertical tiles. Defaults to 10.
 - defaultColor : The starting color of all tiles. Defaults to 0x336699.
 - tileSize: The pixel size of all tiles. Defaults to 50.
+- renderWidthMax: The maximum width of the rendering area, in pixels. Defaults to 480.
+- renderWidthMin: The minimum width of the rendering area, in pixels. Defaults to 240.
+- pixelPerfect: Set to true if you want to ensure tiles are rendered at an integer multiple of their base size, to avoid distortion. Defaults to true.
+- resizeCanvas: Set to true if you want the canvas to resize dynamically. Defaults to true.
+- audioPath: The location to load sound effects from. Defaults to "./sounds/".
+- preloadAudio: An array of sound effects to preload. Defaults to null.
+
+### HTML Attribute Options
+
+You can add attributes to the node that the game runs in to override certain basic options.
+
+#### data-width-max
+Sets the maximum width of the drawing area, in pixels. Overrides the "renderWidthMax" option. Defaults to 480.
+```html
+data-width-max="480"
+```
+
+#### data-width-min
+Sets the minimum width of the drawing area, in pixels. Overrides the "renderWidthMin" option. Defaults to 240.
+```html
+data-width-min="240"
+```
+
+#### data-pixel-perfect
+Changes the behavior of how the rendering area is allowed to resize. Overrides the "pixelPerfect" option. If true, the tiles are forced to render at an integer multiple of their base size (8px). If false, the tiles can be any integer size. Defaults to true.
+```html
+data-pixel-perfect="true"
+```
+
+#### data-resize-canvas
+If set to true, the canvas is allowed to dynamically resize. Otherwise, it is set to the renderWidthMax initially, and does not change. Overrides the "resizeCanvas" option. Defaults to true.
+```html
+data-resize-canvas="true"
+```
+
+### Complete div example
+
+```html
+<div id="test" data-width-max="1024" data-width-min="320" data-pixel-perfect="true" data-resize-canvas="true"></div>
+```
+
 
 ### Spielmatrix Events
 You can register event methods which are called whenever something of interest happens in the engine.
@@ -156,6 +198,18 @@ SM.log("Hello");
 ```
 
 
+### Audio
+
+#### SM.play(soundName)
+Plays the specified sound file. The following sounds are built into the engine:
+
+```
+'Appear', 'Blip1', 'Blip2', 'Blip3', 'Blip4', 'Coin1', 'Coin2', 'Coin3', 'Explosion1', 'Explosion2', 'Explosion3', 'Export', 'Hit1', 'Hit2', 'Jump1', 'Jump2', 'Laser1', 'Laser2', 'Laser3', 'Modem', 'Powerup1', 'Powerup2', 'Powerup3', 'UhOh1', 'UhOh2', 'UhOh3', 'Yarp'
+```
+
+It's recommended to use the 'preloadAudio' option for any sounds that you plan on using in your game.
+
+
 ### Tile Methods
 
 #### Tile.prototype.setColor(color)
@@ -218,6 +272,7 @@ The data property of a tile.
 ```js
 var data = tile.data;
 ```
+
 
 ### Tile Selector
 You can get a reference to the powerful Tile Selector by invoking the selector() method.

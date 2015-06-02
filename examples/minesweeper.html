@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Spielmatrix</title>
+    <title>Spielmatrix Minesweeper</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
     <link href="../lib/spielmatrix.css" type="text/css" rel="stylesheet">
 
@@ -11,12 +11,13 @@
     <script src="../lib/rendering.js"></script>
     <script src="../lib/utilities.js"></script>
     <script src="../lib/keyboard.js"></script>
+    <script src="../lib/mouse.js"></script>
     <script src="../lib/selector.js"></script>
     <script src="../lib/keydrown/keydrown.js"></script>
     <script src="../lib/pixi/pixi.js"></script>
 </head>
-    <body>
-        <center><div id="glyphs" data-width-max="1024"></div></center>
-        <script src="./glyphs.js"></script>
+    <body bgcolor="black">
+        <center><div data-width-max="1000" data-pixel-perfect="false" id="minesweeper"></div></center>
+        <script src="./minesweeper.js"></script>
     </body>
 </html>
