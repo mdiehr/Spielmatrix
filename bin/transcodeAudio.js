@@ -16,7 +16,7 @@ fs.readdir(inPath, function(err, files) {
         if (n.indexOf(inType) > 0) {
             var fileName = n.slice(0, n.length-inType.length);
             _.forEach(outTypes, function(outType) {
-                var outFileName = outPath+fileName+'.'+outType;
+                var outFileName = outPath+fileName+'.'+outType.toLowerCase();
             	console.log(' ... Transcoding ' + outFileName);
                 fs.createReadStream(inPath+n)
                     .pipe( sox({type: outType}) )
