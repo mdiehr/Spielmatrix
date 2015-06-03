@@ -1,0 +1,88 @@
+body {
+	color: white;
+	background-color: #303030;
+	padding-left: 2em;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	padding-right: 2em;
+	-webkit-touch-callout: text;
+	-webkit-user-select: text;
+	-khtml-user-select: text;
+	-moz-user-select: text;
+	-ms-user-select: text;
+	-o-user-select: text;
+	user-select: text;
+	-webkit-user-drag: text;
+}
+
+a {
+	color: orange;
+	text-decoration: none;
+}
+
+a:hover {
+	color: yellow;
+}
+
+h2 {
+	clear: left;
+}
+
+p {
+	color: #C0C0C0;
+	font-size: 14pt;
+	max-width: 1040px;
+}
+
+.floatClear {
+	clear: both;
+}
+
+.container {
+	min-height: 390px;
+}
+
+.outer {
+	width: 535px;
+	min-height: 380px;
+	border: 2px solid #505050;
+}
+
+.reload-button {
+	cursor: pointer;
+	float: left;
+	padding: 4px;
+	position: absolute;
+}
+
+.CodeMirror {
+	position: relative;
+	height: 380px;
+	width: 685px;
+	border: 2px solid #202020;
+}
+
+.big-editor .CodeMirror {
+	height: 800px;
+}
+
+.outer, .editor {
+	float: left;
+	margin-top: 0em;
+	margin-bottom: 1em;
+	margin-left: 0em;
+	margin-right: 0.5em;
+}
+
+.outer {
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-o-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-khtml-border-radius: 8px;
+	border-radius: 8px;
+}
+
+.header-logo {
+	padding-right: 0.4em;
+}
