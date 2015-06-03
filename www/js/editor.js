@@ -76,6 +76,7 @@ var defaultCodeValue =
     	Spielmatrix.shutdownAll();
     	var docText = cm.getValue();
 
+    	// Try to reload the Spielmatrix engine from the code that was written in the editor
     	try {
     		eval(docText);
     	} catch (e) {
