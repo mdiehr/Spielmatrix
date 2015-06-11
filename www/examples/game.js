@@ -15,7 +15,7 @@
 
     // Get a reference to the tile selector
     var S = SM.selector();
-    // Draw a glyph & glyph in every bead 
+    // Draw a glyph and glyphColor in every bead 
     S().glyph(0xFC).glyphColor(0x232355);
 
 })();
