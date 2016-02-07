@@ -1,0 +1,16 @@
+{
+	"build_systems":
+	[
+		{
+			"name": "Build",
+			"shell_cmd": "cd src && npm run build"
+		}
+	],
+	"folders":
+	[
+		{
+			"path": "src",
+			"folder_exclude_patterns": ["node_modules"]
+		}
+	]
+}

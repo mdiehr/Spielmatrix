@@ -21,15 +21,14 @@
 			}
 		},
 
-		play : function(sm, name) {
+		play : function(sm, name, volume) {
+			volume = volume === undefined ? 0.25 : volume;
 			var sound = this.sounds[name];
-			if (sound) {
-				sound.play();
-			} else {
+			if (!sound) {
 				sound = new Howl({src : this.getUrls(sm, name)});
 				this.sounds[name] = sound;
-				sound.play();
 			}
+			sound.volume(volume).play();
 		},
 
 		getUrls : function(sm, name) {
