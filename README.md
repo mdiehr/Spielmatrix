@@ -2,7 +2,7 @@
 A tile-based game engine for prototyping abstract games.
 
 ## Getting Started
-Download the game template [Spielmatrix.zip](https://github.com/mdiehr/Spielmatrix/blob/master/release/Spielmatrix.zip) and unzip it somewhere on your hard drive.
+Download the game template [Spielmatrix.zip](https://github.com/mdiehr/Spielmatrix/releases/download/v1.0.1/Spielmatrix.zip) and unzip it somewhere on your hard drive.
 
 The template contains a game.js file [like this one](https://github.com/mdiehr/Spielmatrix/blob/master/template/game.js) that you can modify to create your game.
 
