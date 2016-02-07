@@ -21,6 +21,7 @@
 		// Internal state
 		this.state = {
 			tiles: [],
+			running: true,
 			renderer: null,
 			width: this.options.width,
 			height: this.options.height,
@@ -31,15 +32,44 @@
 
 		var sm = this;
 
+		registerSpielmatrixInstance(sm);
+
 		Spielmatrix.initializeModules(sm);
 
 		for (var opt in optionHandlers)
 			if (optionHandlers.hasOwnProperty(opt))
 				optionHandlers[opt](this, options[opt], Init);
 
-		Spielmatrix.updateLoop(sm);
+		updateLoop(sm);
 	}
 
+
+	// APPLICATION LIFECYCLE
+
+	var globalInstances = null;
+	function registerSpielmatrixInstance(sm) {
+		if (!globalInstances) {
+			globalInstances = [];
+		}
+
+		globalInstances.push(sm);
+	}
+
+	Spielmatrix.shutdownAll = function() {
+		if (globalInstances && globalInstances.length > 0) {
+			for (var i = 0; i < globalInstances.length; ++i) {
+				Spielmatrix.shutdownInstance(globalInstances[i]);
+			}
+			globalInstances = [];
+		} else {
+			Spielmatrix.error('No instances of Spielmatrix to shut down.');
+		}
+	}
+
+	Spielmatrix.shutdownInstance = function(sm) {
+		sm.state.running = false;
+		Spielmatrix.shutdownModules(sm);
+	}
 
 	// MODULE REGISTRATION
 
@@ -58,6 +88,14 @@
 			var module = Spielmatrix.modules[i];
 			if (typeof module.update === 'function')
 				module.update(sm, data);
+		}
+	};
+
+	Spielmatrix.shutdownModules = function(sm) {
+		for (var i = 0; i < Spielmatrix.modules.length; ++i) {
+			var module = Spielmatrix.modules[i];
+			if (typeof module.shutdown === 'function')
+				module.shutdown(sm);
 		}
 	};
 
@@ -101,18 +139,20 @@
 
 	// MAIN UPDATE LOOP
 
-	Spielmatrix.updateLoop = function(sm) {
+	function updateLoop(sm) {
 		// start animating
 		window.requestAnimationFrame(animate);
 
 		function animate() {
-			var now = Spielmatrix.getMS();
-			var dt = Math.max(1, now - sm.state.time);
-			sm.state.time = now;
-			onUpdate(sm, {"time":dt});
-			Spielmatrix.rendering.render(sm);
-			// Get next animation frame
-			window.requestAnimationFrame(animate);
+			if (sm.state.running) {
+				var now = Spielmatrix.getMS();
+				var dt = Math.max(1, now - sm.state.time);
+				sm.state.time = now;
+				onUpdate(sm, {"time":dt});
+				Spielmatrix.rendering.render(sm);
+				// Get next animation frame
+				window.requestAnimationFrame(animate);
+			}
 		}
 	};
 	
@@ -141,6 +181,7 @@
 				if (old != Init) handle(cm, val, old);
 			} : handle;
 	}
+
 
 	// Passed to option handlers when there is no old value.
 	var Init = Spielmatrix.Init = { toString: function() { return "Spielmatrix.Init"; } };

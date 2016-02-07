@@ -24,6 +24,7 @@
     "transcode" : "node bin/transcodeAudio.js",
     "build": "npm run distfolders && npm run browserify && npm run copy",
     "rebuild": "npm run clean && npm run build",
-    "release": "npm run rebuild && npm run zip"
+    "release": "npm run rebuild && npm run zip",
+    "deploy": "copy dist\\spielmatrix\\ www\\spielmatrix && copy dist\\sounds\\ www\\sounds"
   }
 }

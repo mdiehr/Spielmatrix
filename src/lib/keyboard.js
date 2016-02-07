@@ -12,8 +12,21 @@
 			for (var prop in kd) {
 				if (kd.hasOwnProperty(prop)) {
 					if (kd[prop] instanceof kd.Key) {
+						// TODO: This overwrites every other bound SM instance with this one
 						kd[prop].press(Spielmatrix.keyboard.keyEvent.bind(null, sm, true, prop));
 						kd[prop].up(Spielmatrix.keyboard.keyEvent.bind(null, sm, false, prop));
+					}
+				}
+			}
+		},
+
+		shutdown : function(sm) {
+			for (var prop in kd) {
+				if (kd.hasOwnProperty(prop)) {
+					if (kd[prop] instanceof kd.Key) {
+						// TODO: This unbinds the kb events of every SM instance
+						kd[prop].unbindPress();
+						kd[prop].unbindUp();
 					}
 				}
 			}

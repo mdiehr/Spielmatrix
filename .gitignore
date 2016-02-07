@@ -13,6 +13,8 @@ dist
 node_modules
 .idea
 examples/sounds
+www/sounds
+www/spielmatrix
 
 # Sublime Text
 *.sublime-workspace
