@@ -3,7 +3,11 @@
 	[
 		{
 			"name": "Build",
-			"shell_cmd": "cd src && npm run build"
+			"shell_cmd": "cd $project_path/src && npm start"
+		},
+		{
+			"name": "Lint",
+			"shell_cmd": "cd $project_path/src && npm run lint"
 		}
 	],
 	"folders":

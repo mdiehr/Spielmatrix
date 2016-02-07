@@ -8,8 +8,8 @@ var _ = require('lodash');
 
 var inType = '.wav';
 var outTypes = ['MP3', 'OGG'];
-var inPath = './assets/sounds/';
-var outPath = './dist/sounds/';
+var inPath = './assets/sounds/src';
+var outPath = './assets/sounds/out';
 
 try {
     fs.readdir(inPath, function(err, files) {

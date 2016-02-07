@@ -19,10 +19,11 @@
     "distfolders": "node bin/distfolders.js",
     "browserify": "browserify lib/main.js -o dist/spielmatrix/spielmatrix.bundle.js",
     "minify": "minify dist/spielmatrix/spielmatrix.bundle.js",
-    "copy": "copy lib\\pixi\\pixi.min.js dist\\spielmatrix\\ && copy template\\*.* dist\\ && copy lib\\*.css dist\\spielmatrix\\",
+    "copy": "copy lib\\pixi\\pixi.min.js dist\\spielmatrix\\ && copy template\\*.* dist\\ && copy lib\\*.css dist\\spielmatrix\\ && copy assets\\sounds\\out\\*.* dist\\sounds\\",
     "zip": "node bin/zipDist.js",
     "transcode" : "node bin/transcodeAudio.js",
-    "build": "npm run distfolders && npm run browserify && npm run minify && npm run copy && npm run zip",
-    "rebuild": "npm run clean && npm run build"
+    "build": "npm run distfolders && npm run browserify && npm run copy",
+    "rebuild": "npm run clean && npm run build",
+    "release": "npm run rebuild && npm run zip"
   }
 }
