@@ -50,17 +50,25 @@
         });
     }
 
-    function editorReload() {
-    	Spielmatrix.shutdownAll();
-    	var docText = cm.getValue();
+    function engineShutdown() {
+        Spielmatrix.shutdownAll();
+    }
 
-    	// Try to reload the Spielmatrix engine from the code that was written in the editor
-    	try {
+    function engineStartup() {
+        var docText = cm.getValue();
+
+        // Try to reload the Spielmatrix engine from the code that was written in the editor
+        try {
             var output = transpile(docText);
-    		eval(output);
-    	} catch (e) {
-    		console.error(e);
-    	}
+            eval(output);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    function editorReload() {
+    	engineShutdown();
+        engineStartup();
     }
 
     function transpile(inputCode) {
@@ -71,4 +79,10 @@
         var runButton = document.getElementById('runClickLink');
         runButton.onclick = editorReload;
     }
+
+    // Start engine
+
+    window.setTimeout(function() {
+        engineStartup();
+    }, 5);
 })();
