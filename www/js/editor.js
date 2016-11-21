@@ -44,7 +44,7 @@
             lineWrapping: true,
             foldGutter: true,
             gutters: ["CodeMirror-lint-markers", "CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-            lint: { predef: ["PS"] },
+            lint: { predef: ["Spielmatrix"] },
             extraKeys: {"Ctrl-Y": function(cm) { editorReload(); },
             "Ctrl-Q": function(cm) { cm.foldCode(cm.getCursor()); }}
         });
@@ -56,10 +56,15 @@
 
     	// Try to reload the Spielmatrix engine from the code that was written in the editor
     	try {
-    		eval(docText);
+            var output = transpile(docText);
+    		eval(output);
     	} catch (e) {
     		console.error(e);
     	}
+    }
+
+    function transpile(inputCode) {
+        return Babel.transform(inputCode, { presets: ['es2015'] }).code;
     }
 
     function attachEditorControls() {
