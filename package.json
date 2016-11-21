@@ -1,7 +1,7 @@
 {
   "name": "Spielmatrix",
   "repository": "https://github.com/mdiehr/Spielmatrix.git",
-  "version":"1.0.1",
+  "version": "1.0.1",
   "devDependencies": {
     "jshint": "^2.8.0",
     "browserify": "^10.2.3",
@@ -21,10 +21,13 @@
     "minify": "minify dist/spielmatrix/spielmatrix.bundle.js",
     "copy": "copy lib\\pixi\\pixi.min.js dist\\spielmatrix\\ && copy template\\*.* dist\\ && copy lib\\*.css dist\\spielmatrix\\ && copy assets\\sounds\\out\\*.* dist\\sounds\\",
     "zip": "node bin/zipDist.js",
-    "transcode" : "node bin/transcodeAudio.js",
+    "transcode": "node bin/transcodeAudio.js",
     "build": "npm run distfolders && npm run browserify && npm run copy",
     "rebuild": "npm run clean && npm run build",
     "release": "npm run rebuild && npm run zip",
     "deploy": "copy dist\\spielmatrix\\ www\\spielmatrix && copy dist\\sounds\\ www\\sounds"
+  },
+  "dependencies": {
+    "babel-standalone": "^6.19.0"
   }
 }
