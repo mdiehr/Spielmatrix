@@ -29,6 +29,7 @@
             "jsx": false
         }
     },
+    "plugins": ["transform-decorators-legacy"],
     "rules": {
         "extends": "eslint:recommended"
     }

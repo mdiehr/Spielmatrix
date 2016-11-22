@@ -26,6 +26,7 @@
     }
 
 	var editorId = 'code';
+    var sourceLocation = './examples/minesweeper.js';
     var cm;
 
 	function editorSetup() {
@@ -50,8 +51,18 @@
         });
     }
 
-    function engineShutdown() {
-        Spielmatrix.shutdownAll();
+    function editorStartup() {
+        // Handle downloaded source file
+        function reqListener() {
+            console.log('File loaded: ' + sourceLocation);
+            cm.setValue(this.responseText);
+            engineStartup();
+        }
+        // Download file
+        var oReq = new XMLHttpRequest();
+        oReq.addEventListener("load", reqListener);
+        oReq.open("GET", sourceLocation);
+        oReq.send();
     }
 
     function engineStartup() {
@@ -59,15 +70,14 @@
 
         // Try to reload the Spielmatrix engine from the code that was written in the editor
         try {
-            var output = transpile(docText);
-            eval(output);
+            eval(transpile(docText));
         } catch (e) {
             console.error(e);
         }
     }
 
     function editorReload() {
-    	engineShutdown();
+    	Spielmatrix.shutdownAll();
         engineStartup();
     }
 
@@ -80,9 +90,6 @@
         runButton.onclick = editorReload;
     }
 
-    // Start engine
-
-    window.setTimeout(function() {
-        engineStartup();
-    }, 5);
+    // Start editor
+    editorStartup();
 })();
